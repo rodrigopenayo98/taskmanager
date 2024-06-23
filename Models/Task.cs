@@ -10,10 +10,8 @@ namespace TaskManager.Models
         public int Priority { get; set; }
         public string Status { get; set; }
 
-        // Constructor
         public Task()
         {
-            // Inicialización de propiedades que no pueden ser null
             Title = string.Empty;
             Description = string.Empty;
             Priority = 0;
