@@ -1,0 +1,43 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio IDE
+*.suo
+*.user
+*.sln.docstates
+
+# Compiled binary files
+bin/
+obj/
+
+# NuGet Packages
+*.nuget.props
+*.lock.json
+/packages/
+
+# .NET Core
+.project.lock.json
+.project.json
+*.DotSettings
+
+# Entity Framework Core
+*.SQLite
+
+# Rider IDE
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mac files
+.DS_Store
+
+# Linux swap files
+*.swp
+
+# Logs and databases
+*.log
+*.sqlite
