@@ -12,17 +12,19 @@
             <input type="text" id="title" placeholder="Title" required>
             <textarea id="description" placeholder="Description" required></textarea>
             <select id="priority">
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
+                <option value="0">1. Low</option>
+                <option value="1">2. Medium</option>
+                <option value="2">3. High</option>
             </select>
             <input type="date" id="dueDate" required>
             <select id="status">
                 <option value="Pending">Pending</option>
                 <option value="Completed">Completed</option>
             </select>
-            <button type="submit">Add Task</button>
+            <button class="addButton" type="submit">Add Task</button>
         </form>
+    </div>
+    <div class="tasks-container">
         <div id="tasks"></div>
     </div>
     <script src="scripts.js"></script>

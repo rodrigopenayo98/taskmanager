@@ -3,10 +3,11 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 90vh;
+  background-color: #f1f5f6 ;
+  padding: 30px;
+  justify-content: center;
 }
 
 #app {
@@ -28,16 +29,45 @@ input, textarea, select, button {
 }
 
 #tasks {
-  margin-top: 20px;
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+}
+
+.tasks-container{
+  padding: 15px;
+  border: 1px solid #caa48a ;
+  margin-left: 20px;
+  height: 600px;
+  width: 960px;
+  background-color: #ded7cc ;
+  display: flex;
+  max-width: 1200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .task {
   background: #eee;
   padding: 10px;
-  margin: 5px 0;
   border-radius: 5px;
+  width: 200px;
+  margin: 10px;
+  height: 42%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .task.completed {
   text-decoration: line-through;
+}
+
+.deleteButton{
+  background-color: #D98880;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addButton{
+  background-color: #58D68D;
+  border-radius: 5px;
+  cursor: pointer;
 }
