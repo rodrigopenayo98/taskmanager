@@ -71,3 +71,15 @@ input, textarea, select, button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.editButton{
+  background-color: #A3E4D7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#saveButton{
+  background-color: #58D68D;
+  border-radius: 5px;
+  cursor: pointer;
+}
