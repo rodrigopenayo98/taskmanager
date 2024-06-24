@@ -10,6 +10,7 @@ namespace TaskManager.Models
         TaskName = "";
         Description = "";
         Status = "";
+        Priority = 0;
     }
 
     public int TaskId { get; set; }

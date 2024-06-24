@@ -22,6 +22,7 @@ namespace TaskManager.Controllers
             return await _context.Tasks.ToListAsync();
         }
 
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Task>> GetTask(int id)
         {
