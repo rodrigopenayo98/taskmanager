@@ -41,12 +41,6 @@ namespace TaskManager.Controllers
         {
             try
             {
-                Console.WriteLine("Received task:");
-                Console.WriteLine($"TaskName: {task.TaskName}");
-                Console.WriteLine($"Description: {task.Description}");
-                Console.WriteLine($"Priority: {task.Priority}");
-                Console.WriteLine($"DueDate: {task.DueDate}");
-                Console.WriteLine($"Status: {task.Status}");
 
                 _context.Tasks.Add(task);
                 await _context.SaveChangesAsync();

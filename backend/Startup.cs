@@ -1,9 +1,4 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TaskManager.Data;
 
@@ -56,7 +51,7 @@ namespace TaskManager
 
             app.UseRouting();
 
-            app.UseCors(); // Apply the default CORS policy
+            app.UseCors();
 
             app.UseAuthorization();
 
