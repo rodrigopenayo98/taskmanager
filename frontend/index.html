@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div id="app">
-        <form id="taskForm">
-            <input type="text" id="title" placeholder="Title" required>
-            <textarea id="description" placeholder="Description" required></textarea>
-            <select id="priority">
-                <option value="0">1. Low</option>
-                <option value="1">2. Medium</option>
-                <option value="2">3. High</option>
-            </select>
-            <input type="date" id="dueDate" required>
-            <select id="status">
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-            </select>
-            <button class="addButton" type="submit">Add Task</button>
-            <button id="saveButton" type="button" style="display:none;">Save Changes</button>
-        </form>
-    </div>    
+      <form id="taskForm">
+        <input type="text" id="title" placeholder="Title" required />
+        <textarea
+          id="description"
+          placeholder="Description"
+          required
+        ></textarea>
+        <select id="priority">
+          <option value="0">0. Low</option>
+          <option value="1">1. Medium</option>
+          <option value="2">2. High</option>
+        </select>
+        <input type="date" id="dueDate" required />
+        <select id="status">
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <button class="addButton" type="submit">Add Task</button>
+        <button id="saveButton" type="button" style="display: none">
+          Save Changes
+        </button>
+      </form>
+      <div class="container-filter">
+        <div>
+          <label for="filterPriority">Filter by Priority:</label>
+          <select id="filterPriority">
+            <option value="">All</option>
+            <option value="0">0. Low</option>
+            <option value="1">1. Medium</option>
+            <option value="2">2. High</option>
+          </select>
+        </div>
+        <div>
+          <label for="filterStatus">Filter by Status:</label>
+          <select id="filterStatus">
+            <option value="">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="tasks-container">
-        <div id="tasks"></div>
+      <div id="tasks"></div>
     </div>
     <script src="scripts.js"></script>
-</body>
+  </body>
 </html>

@@ -83,3 +83,7 @@ input, textarea, select, button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.container-filter{
+  padding-top: 15px;
+}
