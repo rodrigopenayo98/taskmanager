@@ -38,11 +38,31 @@ namespace TaskManager.Controllers
         [HttpPost]
         public async Task<ActionResult<Task>> PostTask(Task task)
         {
-            _context.Tasks.Add(task);
-            await _context.SaveChangesAsync();
+            try
+            {
+                Console.WriteLine("Received task:");
+                Console.WriteLine($"TaskName: {task.TaskName}");
+                Console.WriteLine($"Description: {task.Description}");
+                Console.WriteLine($"Priority: {task.Priority}");
+                Console.WriteLine($"DueDate: {task.DueDate}");
+                Console.WriteLine($"Status: {task.Status}");
 
-            return CreatedAtAction("GetTask", new { id = task.TaskId }, task);
+                _context.Tasks.Add(task);
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("Task saved successfully.");
+
+                return CreatedAtAction("GetTask", new { id = task.TaskId }, task);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString()); // Loggeamos cualquier excepción
+                return BadRequest("Error al procesar la solicitud");
+            }
         }
+
+
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(int id, Task task)

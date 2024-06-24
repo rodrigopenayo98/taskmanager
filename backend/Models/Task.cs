@@ -1,22 +1,27 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskManager.Models
 {
-    public class Task
+   public class Task
+{
+    public Task()
     {
-        public int TaskId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int Priority { get; set; }
-        public string Status { get; set; }
-
-        public Task()
-        {
-            Title = string.Empty;
-            Description = string.Empty;
-            Priority = 0;
-            Status = string.Empty;
-        }
+        TaskName = "";
+        Description = "";
+        Status = "";
     }
+
+    public int TaskId { get; set; }
+    public string TaskName { get; set; }
+    public string Description { get; set; }
+    public DateTime DueDate { get; set; }
+    public int Priority { get; set; }
+    public string Status { get; set; }
 }
+
+
+}
+
+
 
