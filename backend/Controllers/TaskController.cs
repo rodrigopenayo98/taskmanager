@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Data;
-
+using Task = TaskManager.Models.Task;
 
 namespace TaskManager.Controllers
 {
@@ -17,13 +17,13 @@ namespace TaskManager.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TaskManager.Models.Task>>> GetTasks()
+        public async Task<ActionResult<IEnumerable<Task>>> GetTasks()
         {
             return await _context.Tasks.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TaskManager.Models.Task>> GetTask(int id)
+        public async Task<ActionResult<Task>> GetTask(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
 
@@ -36,7 +36,7 @@ namespace TaskManager.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TaskManager.Models.Task>> PostTask(TaskManager.Models.Task task)
+        public async Task<ActionResult<Task>> PostTask(Task task)
         {
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
@@ -45,7 +45,7 @@ namespace TaskManager.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTask(int id, TaskManager.Models.Task task)
+        public async Task<IActionResult> PutTask(int id, Task task)
         {
             if (id != task.TaskId)
             {
@@ -94,4 +94,5 @@ namespace TaskManager.Controllers
         }
     }
 }
+
 

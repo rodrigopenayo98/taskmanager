@@ -25,6 +25,16 @@ namespace TaskManager
                 options.UseNpgsql(connectionString));
 
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://127.0.0.1:8080")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,6 +50,8 @@ namespace TaskManager
 
             app.UseRouting();
 
+            app.UseCors("AllowSpecificOrigin");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -48,6 +60,7 @@ namespace TaskManager
             });
         }
     }
+
 }
 
 
