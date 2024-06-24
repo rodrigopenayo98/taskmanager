@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using TaskManager.Data;
 
 namespace TaskManager
@@ -28,12 +29,17 @@ namespace TaskManager
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin", builder =>
+                options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins("http://127.0.0.1:8080")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskManager API", Version = "v1" });
             });
         }
 
@@ -50,7 +56,7 @@ namespace TaskManager
 
             app.UseRouting();
 
-            app.UseCors("AllowSpecificOrigin");
+            app.UseCors(); // Apply the default CORS policy
 
             app.UseAuthorization();
 
@@ -60,8 +66,10 @@ namespace TaskManager
             });
         }
     }
-
 }
+
+
+
 
 
 
