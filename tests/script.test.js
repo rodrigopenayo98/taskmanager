@@ -73,13 +73,13 @@ describe('Task Manager Application', () => {
         window.eval(scriptCode);
     });
 
-    it('debería renderizar las tareas correctamente', async () => {
+    it('should render tasks correctly', async () => {
         await window.loadTasks();
         const taskElements = document.querySelectorAll('.task');
         expect(taskElements.length).toBe(2);
     });
 
-    it('debería filtrar las tareas por prioridad', async () => {
+    it('should filter tasks by priority', async () => {
         const filterPriority = document.getElementById('filterPriority');
         filterPriority.value = '2';
         filterPriority.dispatchEvent(new window.Event('change'));
@@ -88,7 +88,7 @@ describe('Task Manager Application', () => {
         expect(taskElements.length).toBe(1);
     });
 
-    it('debería filtrar las tareas por estado', async () => {
+    it('should filter tasks by status', async () => {
         const filterStatus = document.getElementById('filterStatus');
         filterStatus.value = 'Completed';
         filterStatus.dispatchEvent(new window.Event('change'));
