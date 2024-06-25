@@ -41,3 +41,5 @@ obj/
 # Logs and databases
 *.log
 *.sqlite
+
+node_modules/

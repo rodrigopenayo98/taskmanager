@@ -1,0 +1,89 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  background-color: #f1f5f6 ;
+  padding: 30px;
+  justify-content: center;
+}
+
+#app {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea, select, button {
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 1em;
+}
+
+#tasks {
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+}
+
+.tasks-container{
+  padding: 15px;
+  border: 1px solid #caa48a ;
+  margin-left: 20px;
+  height: 600px;
+  width: 960px;
+  background-color: #ded7cc ;
+  display: flex;
+  max-width: 1200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+  background: #eee;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  margin: 10px;
+  height: 46%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+  text-decoration: line-through;
+}
+
+.deleteButton{
+  background-color: #D98880;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addButton{
+  background-color: #58D68D;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editButton{
+  background-color: #A3E4D7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#saveButton{
+  background-color: #58D68D;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container-filter{
+  padding-top: 15px;
+}
