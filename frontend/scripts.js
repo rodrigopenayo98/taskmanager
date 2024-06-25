@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.ok) {
-                loadTasks();
+                window.loadTasks();
                 taskForm.reset();
             } else {
                 console.error("Error:", response.statusText);
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.ok) {
-                loadTasks();
+                window.loadTasks();
                 taskForm.reset();
                 editingTaskId = null;
                 saveButton.style.display = "none";
@@ -70,22 +70,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    filterPriority.addEventListener("change", loadTasks);
-    filterStatus.addEventListener("change", loadTasks);
+    filterPriority.addEventListener("change", () => {
+        console.log("Filtrando por prioridad:", filterPriority.value);
+        window.loadTasks();
+    });
 
-    async function loadTasks() {
+    filterStatus.addEventListener("change", () => {
+        console.log("Filtrando por estado:", filterStatus.value);
+        window.loadTasks();
+    });
+
+    window.loadTasks = async function() {
         try {
             const response = await fetch("http://localhost:5102/api/tasks");
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`¡Error HTTP! Estado: ${response.status}`);
             }
             const tasks = await response.json();
+
+            console.log("Tareas obtenidas:", tasks);
 
             const filteredTasks = tasks.filter(task => {
                 const priorityMatch = filterPriority.value === "" || task.priority === parseInt(filterPriority.value);
                 const statusMatch = filterStatus.value === "" || task.status === filterStatus.value;
                 return priorityMatch && statusMatch;
             });
+
+            console.log("Tareas filtradas:", filteredTasks);
 
             tasksDiv.innerHTML = "";
             filteredTasks.forEach((task) => {
@@ -94,43 +105,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 taskDiv.innerHTML = `
                     <h3>${task.taskName}</h3>
                     <p>${task.description}</p>
-                    <p>Priority: ${task.priority}</p>
-                    <p>Due Date: ${new Date(task.dueDate).toLocaleDateString()}</p>
-                    <p>Status: ${task.status}</p>
-                    <button class="deleteButton" onclick="deleteTask(${task.taskId})">Delete</button>
-                    <button class="editButton" onclick="editTask(${task.taskId})">Edit</button>
+                    <p>Prioridad: ${task.priority}</p>
+                    <p>Fecha de vencimiento: ${new Date(task.dueDate).toLocaleDateString()}</p>
+                    <p>Estado: ${task.status}</p>
+                    <button class="deleteButton" onclick="window.deleteTask(${task.taskId})">Eliminar</button>
+                    <button class="editButton" onclick="window.editTask(${task.taskId})">Editar</button>
                 `;
                 tasksDiv.appendChild(taskDiv);
             });
         } catch (error) {
-            console.error("Fetch error:", error);
+            console.error("Error en la solicitud:", error);
         }
-    }
+    };
 
-    window.deleteTask = async function (taskId) {
+    window.deleteTask = async function(taskId) {
         try {
-            const response = await fetch(
-                `http://localhost:5102/api/tasks/${taskId}`,
-                {
-                    method: "DELETE",
-                }
-            );
+            const response = await fetch(`http://localhost:5102/api/tasks/${taskId}`, {
+                method: "DELETE",
+            });
 
             if (response.ok) {
-                loadTasks();
+                window.loadTasks();
             } else {
                 console.error("Error:", response.statusText);
             }
         } catch (error) {
-            console.error("Fetch error:", error);
+            console.error("Error en la solicitud:", error);
         }
     };
 
-    window.editTask = async function (taskId) {
+    window.editTask = async function(taskId) {
         try {
             const response = await fetch(`http://localhost:5102/api/tasks/${taskId}`);
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`¡Error HTTP! Estado: ${response.status}`);
             }
             const task = await response.json();
             editingTaskId = taskId;
@@ -143,10 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".addButton").style.display = "none";
             saveButton.style.display = "block";
         } catch (error) {
-            console.error("Fetch error:", error);
+            console.error("Error en la solicitud:", error);
         }
     };
 
-    loadTasks();
+    window.loadTasks();
 });
+
 
